@@ -26,7 +26,7 @@
       .btn:hover { background: #2563eb; transform: scale(1.05); }
       .btn svg { width: 24px; height: 24px; }
       .panel {
-        position: absolute; bottom: 70px; ${e.position==="left"?"left":"right"}: 0;
+        position: absolute; bottom: 14rem; ${e.position==="left"?"left":"right"}: 0;
         width: 320px; max-height: 80vh; overflow: auto; border-radius: 8px;
         background: #ffffff; color: #333333; box-shadow: 0 4px 20px rgba(0,0,0,.1);
         border: 1px solid #e5e7eb; display: none; opacity: 0; transform: translateY(10px);
