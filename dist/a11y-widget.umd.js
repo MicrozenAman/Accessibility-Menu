@@ -1,6 +1,6 @@
-(function(h){typeof define=="function"&&define.amd?define(h):h()})((function(){"use strict";(()=>{const h="a11y_widget_prefs_v1",v={position:"right",customButton:null,defaults:{fontScale:1,letterSpacing:0,invertColors:!1,grayscale:!1,underlineLinks:!1,bigCursor:!1,readingGuide:!1,textToSpeech:!1,reduceMotion:!1}};function k(){try{return JSON.parse(localStorage.getItem(h))||{}}catch(e){return{}}}function b(e){try{localStorage.setItem(h,JSON.stringify(e))}catch(t){}}let p=null,s=null;function S(){"speechSynthesis"in window&&(p=window.speechSynthesis)}function L(){s||(s=document.createElement("div"),s.style.cssText=`
-      position: fixed; left: 0; width: 100%; height: 2px; pointer-events: none;
-      z-index: 2147483646; background: #000; display: none;
+(function(h){typeof define=="function"&&define.amd?define(h):h()})((function(){"use strict";(()=>{const h="a11y_widget_prefs_v1",f={position:"right",customButton:null,defaults:{fontScale:1,letterSpacing:0,invertColors:!1,grayscale:!1,underlineLinks:!1,bigCursor:!1,readingGuide:!1,textToSpeech:!1,reduceMotion:!1}};function k(){try{return JSON.parse(localStorage.getItem(h))||{}}catch(e){return{}}}function b(e){try{localStorage.setItem(h,JSON.stringify(e))}catch(t){}}let p=null,s=null;function S(){"speechSynthesis"in window&&(p=window.speechSynthesis)}function L(){s||(s=document.createElement("div"),s.style.cssText=`
+      position: fixed; left: 0; width: 100%; height: 4px; pointer-events: none;
+      z-index: 2147483646; background: linear-gradient(180deg, #22c55e 0%, #22c55e 50%, #000 50%, #000 100%); display: none;
     `,document.body.appendChild(s))}function x(e){(s==null?void 0:s.style.display)!=="none"&&(s.style.top=`${e.clientY}px`)}function E(){if(document.getElementById("a11y-effect-styles"))return;const e=document.createElement("style");e.id="a11y-effect-styles",e.textContent=`
     :root { --a11y-font-scale: 1; --a11y-letter-spacing: 0px; }
     html.a11y--scaled { font-size: calc(100% * var(--a11y-font-scale)); }
@@ -8,12 +8,12 @@
     html.a11y--invert { filter: invert(1) hue-rotate(180deg); background-color: #000; }
     html.a11y--grayscale { filter: grayscale(1); }
     html.a11y--underline a:not([data-a11y-widget] a) { text-decoration: underline !important; }
-    html.a11y--big-cursor, html.a11y--big-cursor *:not([data-a11y-widget]):not([data-a11y-widget] *) { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><g><path fill="%23000" stroke="%23fff" stroke-width="2" d="M10 10 L10 28 L16 22 L20 30 L24 28 L20 20 L28 20 Z"/></g></svg>') 0 0, auto !important; }
+    html.a11y--big-cursor, html.a11y--big-cursor *:not([data-a11y-widget]):not([data-a11y-widget] *) { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><g><path fill="%23000" stroke="%23fff" stroke-width="3" d="M12 12 L12 36 L20 28 L26 40 L32 36 L26 24 L38 24 Z"/></g></svg>') 0 0, auto !important; }
     html.a11y--reduce-motion *:not([data-a11y-widget]):not([data-a11y-widget] *), html.a11y--reduce-motion *:not([data-a11y-widget]):not([data-a11y-widget] *)::before, html.a11y--reduce-motion *:not([data-a11y-widget]):not([data-a11y-widget] *)::after {
       animation: none !important; transition: none !important; scroll-behavior: auto !important;
     }
     .a11y-tts-highlight { background-color: yellow !important; color: black !important; box-shadow: 0 0 0 2px yellow !important; }
-    `,document.head.appendChild(e)}function r(e){return{type:'<svg viewBox="0 0 24 24"><polyline points="4,7 4,4 20,4 20,7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>',"align-justify":'<svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>',"refresh-cw":'<svg viewBox="0 0 24 24"><polyline points="23,4 23,10 17,10"></polyline><polyline points="1,20 1,14 7,14"></polyline><path d="m20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>',target:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>',link:'<svg viewBox="0 0 24 24"><path d="10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path><line x1="2" y1="22" x2="22" y2="22"></line></svg>',"mouse-pointer":'<svg viewBox="0 0 24 24"><path d="m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z"></path><path d="m13 13 6 6"></path></svg>',minus:'<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line></svg>',"volume-2":'<svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>',ban:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg>'}[e]||'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle></svg>'}function M(e,t,o){const l=document.createElement("div"),a=document.createElement("div");a.setAttribute("aria-live","polite"),a.setAttribute("data-a11y-widget","true"),a.style.position="fixed",a.style.zIndex="2147483647",a.style.bottom="30px",a.style.right="0px",l.appendChild(a);const i=a.attachShadow({mode:"open"}),u=document.createElement("style");u.textContent=`
+    `,document.head.appendChild(e)}function l(e){return{type:'<svg viewBox="0 0 24 24"><polyline points="4,7 4,4 20,4 20,7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>',"align-justify":'<svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>',"refresh-cw":'<svg viewBox="0 0 24 24"><polyline points="23,4 23,10 17,10"></polyline><polyline points="1,20 1,14 7,14"></polyline><path d="m20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>',target:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>',link:'<svg viewBox="0 0 24 24"><path d="10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path><line x1="2" y1="22" x2="22" y2="22"></line></svg>',"mouse-pointer":'<svg viewBox="0 0 24 24"><path d="m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z"></path><path d="m13 13 6 6"></path></svg>',"reading-guide":'<svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line></svg>',"volume-2":'<svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>',ban:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg>',x:'<svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>',"rotate-ccw":'<svg viewBox="0 0 24 24"><polyline points="1,4 1,10 7,10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>'}[e]||'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle></svg>'}function $(e,t,o){const c=document.createElement("div"),a=document.createElement("div");a.setAttribute("aria-live","polite"),a.setAttribute("data-a11y-widget","true"),a.style.position="fixed",a.style.zIndex="2147483647",a.style.bottom="30px",a.style.right="0px",c.appendChild(a);const i=a.attachShadow({mode:"open"}),u=document.createElement("style");u.textContent=`
       @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
       :host { all: initial; font-family: 'Quicksand', sans-serif; }
       .btn {
@@ -40,6 +40,9 @@
         all: unset; cursor: pointer; width: 24px; height: 24px; border-radius: 4px;
         display: flex; align-items: center; justify-content: center;
         transition: all 0.2s ease; font-size: 16px; font-weight: 600;
+      }
+      .close-btn svg, .reset-btn svg {
+        width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2;
       }
       .close-btn { color: #ef4444; }
       .close-btn:hover { background: #fef2f2; color: #dc2626; }
@@ -239,14 +242,14 @@ z"/>
         <div class="header">
           <span>Accessibility Options</span>
           <div class="header-controls">
-            <button class="reset-btn" title="Reset All">🔄</button>
-            <button class="close-btn" title="Close">✕</button>
+            <button class="reset-btn" title="Reset All">${l("rotate-ccw")}</button>
+            <button class="close-btn" title="Close">${l("x")}</button>
           </div>
         </div>
         <div class="content">
           <div class="option-group">
             <div class="option">
-              <div class="option-icon">${r("type")}</div>
+              <div class="option-icon">${l("type")}</div>
               <div class="option-label">Text Size: <span class="font-value">${Math.round(t.fontScale*100)}%</span></div>
               <div class="option-controls">
                 <button class="size-btn font-dec">-</button>
@@ -256,7 +259,7 @@ z"/>
           </div>
           <div class="option-group">
             <div class="option">
-              <div class="option-icon">${r("align-justify")}</div>
+              <div class="option-icon">${l("align-justify")}</div>
               <div class="option-label">Text Spacing: <span class="spacing-value">${t.letterSpacing}px</span></div>
               <div class="option-controls">
                 <button class="size-btn space-dec">-</button>
@@ -265,7 +268,7 @@ z"/>
             </div>
           </div>
           <div class="option">
-            <div class="option-icon">${r("refresh-cw")}</div>
+            <div class="option-icon">${l("refresh-cw")}</div>
             <div class="option-label">Invert Colors</div>
             <label class="toggle-switch">
               <input type="checkbox" class="toggle-invert" ${t.invertColors?"checked":""}>
@@ -273,7 +276,7 @@ z"/>
             </label>
           </div>
           <div class="option">
-            <div class="option-icon">${r("target")}</div>
+            <div class="option-icon">${l("target")}</div>
             <div class="option-label">Gray Hues</div>
             <label class="toggle-switch">
               <input type="checkbox" class="toggle-grayscale" ${t.grayscale?"checked":""}>
@@ -281,7 +284,7 @@ z"/>
             </label>
           </div>
           <div class="option">
-            <div class="option-icon">${r("link")}</div>
+            <div class="option-icon">${l("link")}</div>
             <div class="option-label">Underline Links</div>
             <label class="toggle-switch">
               <input type="checkbox" class="toggle-underline" ${t.underlineLinks?"checked":""}>
@@ -289,7 +292,7 @@ z"/>
             </label>
           </div>
           <div class="option">
-            <div class="option-icon">${r("mouse-pointer")}</div>
+            <div class="option-icon">${l("mouse-pointer")}</div>
             <div class="option-label">Big Cursor</div>
             <label class="toggle-switch">
               <input type="checkbox" class="toggle-cursor" ${t.bigCursor?"checked":""}>
@@ -297,7 +300,7 @@ z"/>
             </label>
           </div>
           <div class="option">
-            <div class="option-icon">${r("minus")}</div>
+            <div class="option-icon">${l("reading-guide")}</div>
             <div class="option-label">Reading Guide</div>
             <label class="toggle-switch">
               <input type="checkbox" class="toggle-guide" ${t.readingGuide?"checked":""}>
@@ -305,7 +308,7 @@ z"/>
             </label>
           </div>
           <div class="option">
-            <div class="option-icon">${r("volume-2")}</div>
+            <div class="option-icon">${l("volume-2")}</div>
             <div class="option-label">Text to Speech</div>
             <label class="toggle-switch">
               <input type="checkbox" class="toggle-tts" ${t.textToSpeech?"checked":""}>
@@ -313,7 +316,7 @@ z"/>
             </label>
           </div>
           <div class="option">
-            <div class="option-icon">${r("ban")}</div>
+            <div class="option-icon">${l("ban")}</div>
             <div class="option-label">Disable Animations</div>
             <label class="toggle-switch">
               <input type="checkbox" class="toggle-motion" ${t.reduceMotion?"checked":""}>
@@ -322,4 +325,4 @@ z"/>
           </div>
         </div>
       </div>
-    `,i.appendChild(u),i.appendChild(g);const d=i.querySelector(".btn"),c=i.querySelector(".panel"),T=i.querySelector(".reset-btn"),C=i.querySelector(".close-btn"),m=()=>{const n=c.classList.contains("show");n?(c.classList.remove("show"),setTimeout(()=>c.style.display="none",200)):(c.style.display="block",setTimeout(()=>c.classList.add("show"),10)),d&&d.setAttribute("aria-expanded",String(!n))};if(d&&d.addEventListener("click",n=>{n.preventDefault(),n.stopPropagation(),m()}),e.customButton){const n=document.querySelector(e.customButton);n&&n.addEventListener("click",w=>{w.preventDefault(),w.stopPropagation(),m()})}return C&&C.addEventListener("click",n=>{n.preventDefault(),n.stopPropagation(),c.classList.remove("show"),setTimeout(()=>c.style.display="none",200),d&&d.setAttribute("aria-expanded","false")}),document.addEventListener("click",n=>{!a.contains(n.target)&&n.target!==d&&c.classList.contains("show")&&(c.classList.remove("show"),setTimeout(()=>c.style.display="none",200),d&&d.setAttribute("aria-expanded","false"))}),T.addEventListener("click",()=>o.reset()),i.querySelector(".font-inc").addEventListener("click",()=>o.act("font-inc")),i.querySelector(".font-dec").addEventListener("click",()=>o.act("font-dec")),i.querySelector(".space-inc").addEventListener("click",()=>o.act("space-inc")),i.querySelector(".space-dec").addEventListener("click",()=>o.act("space-dec")),i.querySelector(".toggle-invert").addEventListener("change",()=>o.act("toggle-invert")),i.querySelector(".toggle-grayscale").addEventListener("change",()=>o.act("toggle-grayscale")),i.querySelector(".toggle-underline").addEventListener("change",()=>o.act("toggle-underline")),i.querySelector(".toggle-cursor").addEventListener("change",()=>o.act("toggle-cursor")),i.querySelector(".toggle-guide").addEventListener("change",()=>o.act("toggle-guide")),i.querySelector(".toggle-tts").addEventListener("change",()=>o.act("toggle-tts")),i.querySelector(".toggle-motion").addEventListener("change",()=>o.act("toggle-motion")),{mount:()=>document.body.appendChild(l),destroy:()=>l.remove(),root:i}}function y(e){const t=document.documentElement;t.style.setProperty("--a11y-font-scale",String(e.fontScale)),t.classList.toggle("a11y--scaled",e.fontScale!==1),t.style.setProperty("--a11y-letter-spacing",`${e.letterSpacing}px`),t.classList.toggle("a11y--spacing",e.letterSpacing!==0),t.classList.toggle("a11y--invert",!!e.invertColors),t.classList.toggle("a11y--grayscale",!!e.grayscale),t.classList.toggle("a11y--underline",!!e.underlineLinks),t.classList.toggle("a11y--big-cursor",!!e.bigCursor),t.classList.toggle("a11y--reduce-motion",!!e.reduceMotion),e.readingGuide?(L(),s&&(s.style.display="block"),document.addEventListener("mousemove",x)):(s&&(s.style.display="none"),document.removeEventListener("mousemove",x)),e.textToSpeech?(S(),document.addEventListener("mouseup",f)):(document.removeEventListener("mouseup",f),p&&p.cancel())}function f(){const t=window.getSelection().toString().trim();if(t&&p){p.cancel();const o=new SpeechSynthesisUtterance(t);p.speak(o)}}class ${constructor(t){this.opts={...v,...t},this.state={...this.opts.defaults,...k()}}init(){E(),y(this.state);const t={reset:()=>{this.state={...v.defaults},b(this.state),y(this.state),this.refreshUI()},act:o=>{const l=(a,i,u,g=.1)=>Math.round(Math.min(u,Math.max(i,a))/g)*g;switch(o){case"font-inc":this.state.fontScale=l(this.state.fontScale+.1,.8,2);break;case"font-dec":this.state.fontScale=l(this.state.fontScale-.1,.8,2);break;case"space-inc":this.state.letterSpacing=l(this.state.letterSpacing+.5,0,5,.5);break;case"space-dec":this.state.letterSpacing=l(this.state.letterSpacing-.5,0,5,.5);break;case"toggle-invert":this.state.invertColors=!this.state.invertColors;break;case"toggle-grayscale":this.state.grayscale=!this.state.grayscale;break;case"toggle-underline":this.state.underlineLinks=!this.state.underlineLinks;break;case"toggle-cursor":this.state.bigCursor=!this.state.bigCursor;break;case"toggle-guide":this.state.readingGuide=!this.state.readingGuide;break;case"toggle-tts":this.state.textToSpeech=!this.state.textToSpeech;break;case"toggle-motion":this.state.reduceMotion=!this.state.reduceMotion;break}b(this.state),y(this.state),this.refreshUI()}};this.ui=M(this.opts,this.state,t),this.ui.mount()}refreshUI(){if(!this.ui)return;const t=this.ui.root,o=t.querySelector(".font-value"),l=t.querySelector(".spacing-value");o&&(o.textContent=`${Math.round(this.state.fontScale*100)}%`),l&&(l.textContent=`${this.state.letterSpacing}px`);const a={".toggle-invert":this.state.invertColors,".toggle-grayscale":this.state.grayscale,".toggle-underline":this.state.underlineLinks,".toggle-cursor":this.state.bigCursor,".toggle-guide":this.state.readingGuide,".toggle-tts":this.state.textToSpeech,".toggle-motion":this.state.reduceMotion};Object.entries(a).forEach(([i,u])=>{const g=t.querySelector(i);g&&(g.checked=u)})}destroy(){document.removeEventListener("mouseup",f),p&&p.cancel(),s&&(s.remove(),s=null),this.ui&&this.ui.destroy()}}window.A11yWidget={init(e){this._instance||(this._instance=new $(e)),this._instance.init()},destroy(){var e;(e=this._instance)==null||e.destroy(),this._instance=null}}})()}));
+    `,i.appendChild(u),i.appendChild(g);const d=i.querySelector(".btn"),r=i.querySelector(".panel"),B=i.querySelector(".reset-btn"),C=i.querySelector(".close-btn"),m=()=>{const n=r.classList.contains("show");n?(r.classList.remove("show"),setTimeout(()=>r.style.display="none",200)):(r.style.display="block",setTimeout(()=>r.classList.add("show"),10)),d&&d.setAttribute("aria-expanded",String(!n))};if(d&&d.addEventListener("click",n=>{n.preventDefault(),n.stopPropagation(),m()}),e.customButton){const n=document.querySelector(e.customButton);n&&n.addEventListener("click",w=>{w.preventDefault(),w.stopPropagation(),m()})}return C&&C.addEventListener("click",n=>{n.preventDefault(),n.stopPropagation(),r.classList.remove("show"),setTimeout(()=>r.style.display="none",200),d&&d.setAttribute("aria-expanded","false")}),document.addEventListener("click",n=>{!a.contains(n.target)&&n.target!==d&&r.classList.contains("show")&&(r.classList.remove("show"),setTimeout(()=>r.style.display="none",200),d&&d.setAttribute("aria-expanded","false"))}),B.addEventListener("click",()=>o.reset()),i.querySelector(".font-inc").addEventListener("click",()=>o.act("font-inc")),i.querySelector(".font-dec").addEventListener("click",()=>o.act("font-dec")),i.querySelector(".space-inc").addEventListener("click",()=>o.act("space-inc")),i.querySelector(".space-dec").addEventListener("click",()=>o.act("space-dec")),i.querySelector(".toggle-invert").addEventListener("change",()=>o.act("toggle-invert")),i.querySelector(".toggle-grayscale").addEventListener("change",()=>o.act("toggle-grayscale")),i.querySelector(".toggle-underline").addEventListener("change",()=>o.act("toggle-underline")),i.querySelector(".toggle-cursor").addEventListener("change",()=>o.act("toggle-cursor")),i.querySelector(".toggle-guide").addEventListener("change",()=>o.act("toggle-guide")),i.querySelector(".toggle-tts").addEventListener("change",()=>o.act("toggle-tts")),i.querySelector(".toggle-motion").addEventListener("change",()=>o.act("toggle-motion")),{mount:()=>document.body.appendChild(c),destroy:()=>c.remove(),root:i}}function y(e){const t=document.documentElement;t.style.setProperty("--a11y-font-scale",String(e.fontScale)),t.classList.toggle("a11y--scaled",e.fontScale!==1),t.style.setProperty("--a11y-letter-spacing",`${e.letterSpacing}px`),t.classList.toggle("a11y--spacing",e.letterSpacing!==0),t.classList.toggle("a11y--invert",!!e.invertColors),t.classList.toggle("a11y--grayscale",!!e.grayscale),t.classList.toggle("a11y--underline",!!e.underlineLinks),t.classList.toggle("a11y--big-cursor",!!e.bigCursor),t.classList.toggle("a11y--reduce-motion",!!e.reduceMotion),e.readingGuide?(L(),s&&(s.style.display="block"),document.addEventListener("mousemove",x)):(s&&(s.style.display="none"),document.removeEventListener("mousemove",x)),e.textToSpeech?(S(),document.addEventListener("mouseup",v)):(document.removeEventListener("mouseup",v),p&&p.cancel())}function v(){const t=window.getSelection().toString().trim();if(t&&p){p.cancel();const o=new SpeechSynthesisUtterance(t);p.speak(o)}}class M{constructor(t){this.opts={...f,...t},this.state={...this.opts.defaults,...k()}}init(){E(),y(this.state);const t={reset:()=>{this.state={...f.defaults},b(this.state),y(this.state),this.refreshUI()},act:o=>{const c=(a,i,u,g=.1)=>Math.round(Math.min(u,Math.max(i,a))/g)*g;switch(o){case"font-inc":this.state.fontScale=c(this.state.fontScale+.1,.8,2);break;case"font-dec":this.state.fontScale=c(this.state.fontScale-.1,.8,2);break;case"space-inc":this.state.letterSpacing=c(this.state.letterSpacing+.5,0,5,.5);break;case"space-dec":this.state.letterSpacing=c(this.state.letterSpacing-.5,0,5,.5);break;case"toggle-invert":this.state.invertColors=!this.state.invertColors;break;case"toggle-grayscale":this.state.grayscale=!this.state.grayscale;break;case"toggle-underline":this.state.underlineLinks=!this.state.underlineLinks;break;case"toggle-cursor":this.state.bigCursor=!this.state.bigCursor;break;case"toggle-guide":this.state.readingGuide=!this.state.readingGuide;break;case"toggle-tts":this.state.textToSpeech=!this.state.textToSpeech;break;case"toggle-motion":this.state.reduceMotion=!this.state.reduceMotion;break}b(this.state),y(this.state),this.refreshUI()}};this.ui=$(this.opts,this.state,t),this.ui.mount()}refreshUI(){if(!this.ui)return;const t=this.ui.root,o=t.querySelector(".font-value"),c=t.querySelector(".spacing-value");o&&(o.textContent=`${Math.round(this.state.fontScale*100)}%`),c&&(c.textContent=`${this.state.letterSpacing}px`);const a={".toggle-invert":this.state.invertColors,".toggle-grayscale":this.state.grayscale,".toggle-underline":this.state.underlineLinks,".toggle-cursor":this.state.bigCursor,".toggle-guide":this.state.readingGuide,".toggle-tts":this.state.textToSpeech,".toggle-motion":this.state.reduceMotion};Object.entries(a).forEach(([i,u])=>{const g=t.querySelector(i);g&&(g.checked=u)})}destroy(){document.removeEventListener("mouseup",v),p&&p.cancel(),s&&(s.remove(),s=null),this.ui&&this.ui.destroy()}}window.A11yWidget={init(e){this._instance||(this._instance=new M(e)),this._instance.init()},destroy(){var e;(e=this._instance)==null||e.destroy(),this._instance=null}}})()}));
